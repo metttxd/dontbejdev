@@ -13,7 +13,7 @@ app.use(cookieParser());
 
 // Configura CORS per accettare richieste da tutti i domini
 app.use(cors({
-  origin: "https://dontbej.com", // Accetta richieste da qualsiasi dominio
+  origin: "https://www.dontbej.com", // Accetta richieste da qualsiasi dominio
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
