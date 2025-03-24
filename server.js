@@ -20,7 +20,7 @@ app.use(cors({
 }));
 
 // Abilita le richieste preflight per CORS
-app.options("https://dontbej.com", cors());
+app.options("https://www.dontbej.com", cors());
 
 // Connessione a MongoDB con gestione degli errori
 mongoose.connect(process.env.VITE_DB_LINK, {
