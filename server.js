@@ -24,14 +24,14 @@ app.use((req, res, next) => {
 
 // Configura CORS
 app.use(cors({
-  origin: "https://dontbej.com",
+  origin: "https://www.dontbej.com",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
 }));
 
 // Abilita le richieste preflight per CORS
-app.options("https://dontbej.com", cors());
+app.options("https://www.dontbej.com", cors());
 
 // Connessione a MongoDB
 mongoose.connect(process.env.VITE_DB_LINK, {
