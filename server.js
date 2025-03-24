@@ -13,7 +13,7 @@ const port = process.env.PORT || 4000;
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: ["https://www.dontbej.com", "https://dev.dontbej.com"],
+  origin: ["*"],
   methods: ["GET", "POST"],
   credentials: true
 }));
