@@ -13,14 +13,14 @@ app.use(cookieParser());
 
 // Configura CORS per accettare richieste da tutti i domini
 app.use(cors({
-  origin: "https://dontbej.com", // Accetta richieste da qualsiasi dominio
+  origin: "https://www.dontbej.com", // Accetta richieste da qualsiasi dominio
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
 }));
 
 // Abilita le richieste preflight per CORS
-app.options("https://dontbej.com", cors());
+app.options("https://www.dontbej.com", cors());
 
 // Connessione a MongoDB con gestione degli errori
 mongoose.connect(process.env.VITE_DB_LINK, {
