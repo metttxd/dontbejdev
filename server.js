@@ -70,7 +70,7 @@ app.post("/send-email", async (req, res) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": Bearer ${process.env.VITE_RESEND_API_KEY},
+        "Authorization": `Bearer ${process.env.VITE_RESEND_API_KEY}`,
       },
       body: JSON.stringify({
         from: "dontbeJ <dontreply@dontbej.com>",
@@ -89,4 +89,4 @@ app.post("/send-email", async (req, res) => {
 });
 
 // Avvio del server
-app.listen(port, () => console.log(Server in esecuzione sulla porta ${port}));
+app.listen(port, () => console.log(`Server in esecuzione sulla porta ${port}`));
