@@ -13,8 +13,9 @@ const port = process.env.PORT || 4000;
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  credentials: true,
-  origin: process.env.VITE_STATUS === 'PROD' ? process.env.VITE_FRONTEND_URL : 'http://localhost:5173'
+  origin: ["https://www.dontbej.com", "https://dev.dontbej.com"],
+  methods: ["GET", "POST"],
+  credentials: true
 }));
 
 app.get('/', (req, res) => res.send('API COORECTLY WORKING'));
