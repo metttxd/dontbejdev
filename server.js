@@ -11,18 +11,29 @@ const port = process.env.PORT || 4000;
 app.use(express.json());
 app.use(cookieParser());
 
-// Configura CORS per accettare richieste da tutti i domini
+// Middleware per controllare manualmente l'header "Origin"
+app.use((req, res, next) => {
+  const allowedOrigin = "https://dontbej.com";
+
+  if (req.headers.origin && req.headers.origin !== allowedOrigin) {
+    return res.status(403).json({ error: "Accesso negato" });
+  }
+
+  next();
+});
+
+// Configura CORS
 app.use(cors({
-  origin: "https://dontbej.com", // Accetta richieste da qualsiasi dominio
+  origin: "https://dontbej.com",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
 }));
 
 // Abilita le richieste preflight per CORS
-app.options("https://dontbej.com", cors());
+app.options("*", cors());
 
-// Connessione a MongoDB con gestione degli errori
+// Connessione a MongoDB
 mongoose.connect(process.env.VITE_DB_LINK, {
   useNewUrlParser: true,
   useUnifiedTopology: true
