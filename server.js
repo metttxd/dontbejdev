@@ -13,7 +13,7 @@ app.use(cookieParser());
 
 // Configura CORS per accettare richieste solo dal dominio www.dontbej.com
 app.use(cors({
-  origin: "https://www.dontbej.com", // Permetti solo richieste dal dominio www.dontbej.com
+  origin: 'https://www.dontbej.com', // Permetti solo richieste dal dominio www.dontbej.com
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
@@ -24,13 +24,13 @@ app.options("https://www.dontbej.com", cors());
 
 // Middleware per limitare l'accesso solo da www.dontbej.com
 app.use((req, res, next) => {
-  const referer = req.get('Referer');
   const origin = req.get('Origin');
   
   // Se la richiesta non proviene dal dominio www.dontbej.com, rispondi con un errore
-  if ((referer && !referer.includes('www.dontbej.com')) && (origin && !origin.includes('www.dontbej.com'))) {
+  if (origin !== 'https://www.dontbej.com') {
     return res.status(403).send('Accesso non autorizzato. Solo richieste da www.dontbej.com sono permesse.');
   }
+  
   next();
 });
 
